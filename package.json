@@ -1,0 +1,15 @@
+{
+  "name": "proshopv2",
+  "version": "1.0.0",
+  "description": "ecommerce app",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js"
+  },
+  "author": "Prakhar",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
