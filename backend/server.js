@@ -10,6 +10,10 @@ import userRoutes from './routes/userRoutes.js'
 const port = process.env.PORT || 5000 ;
 
 const app = express();
+// Body parser middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 
 app.use(cors({
     credentials: true,
