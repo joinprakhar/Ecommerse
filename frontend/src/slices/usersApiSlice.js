@@ -35,39 +35,49 @@ export const usersApiSlice = apiSlice.injectEndpoints({
                 credentials: "include",
             }),
         }),
-        // getUsers: builder.query({
-        //     query: () => ({
-        //         url: USERS_URL,
-        //     }),
-        //     providesTags: ['User'],
-        //     keepUnusedDataFor: 5,
-        // }),
-        // deleteUser: builder.mutation({
-        //     query: (userId) => ({
-        //         url: `${USERS_URL}/${userId}`,
-        //         method: 'DELETE',
-        //     }),
-        // }),
-        // getUserDetails: builder.query({
-        //     query: (id) => ({
-        //         url: `${USERS_URL}/${id}`,
-        //     }),
-        //     keepUnusedDataFor: 5,
-        // }),
-        // updateUser: builder.mutation({
-        //     query: (data) => ({
-        //         url: `${USERS_URL}/${data.userId}`,
-        //         method: 'PUT',
-        //         body: data,
-        //     }),
-        //     invalidatesTags: ['User'],
-        // }),
+        getUsers: builder.query({
+            query: () => ({
+                url: USERS_URL,
+                credentials: "include",
+            }),
+            providesTags: ['User'],
+            keepUnusedDataFor: 5,
+        }),
+        deleteUser: builder.mutation({
+            query: (userId) => ({
+                url: `${USERS_URL}/${userId}`,
+                method: 'DELETE',
+                credentials: "include",
+            }),
+        }),
+        getUserDetails: builder.query({
+            query: (id) => ({
+                url: `${USERS_URL}/${id}`,
+                credentials: "include",
+            }),
+            keepUnusedDataFor: 5,
+        }),
+        updateUser: builder.mutation({
+            query: (data) => ({
+                url: `${USERS_URL}/${data.userId}`,
+                method: 'PUT',
+                body: data,
+                credentials: "include",
+            }),
+            invalidatesTags: ['User'],
+        }),
     }),
 });
 
-export const { 
-    useLoginMutation, 
-    useLogoutMutation, 
-    useRegisterMutation, useProfileMutation } = usersApiSlice;
+export const {
+    useLoginMutation,
+    useLogoutMutation,
+    useRegisterMutation,
+    useProfileMutation,
+    useGetUsersQuery,
+    useDeleteUserMutation,
+    useUpdateUserMutation,
+    useGetUserDetailsQuery,
+} = usersApiSlice;
 //query - get
 //mutation - post
