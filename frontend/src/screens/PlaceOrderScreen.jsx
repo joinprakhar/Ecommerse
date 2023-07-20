@@ -38,7 +38,7 @@ const PlaceOrderScreen = () => {
         totalPrice: cart.totalPrice,
         userId: userInfo?._id
       }).unwrap();
-      console.log(res)
+      
       dispatch(clearCartItems());
       navigate(`/order/${res._id}`);
     } catch (err) {
