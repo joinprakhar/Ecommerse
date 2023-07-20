@@ -44,6 +44,7 @@ export const orderApiSlice = apiSlice.injectEndpoints({
         getOrders: builder.query({
             query: () => ({
                 url: ORDERS_URL,
+                credentials: "include", 
             }),
             keepUnusedDataFor: 5,
         }),
@@ -51,6 +52,7 @@ export const orderApiSlice = apiSlice.injectEndpoints({
             query: (orderId) => ({
                 url: `${ORDERS_URL}/${orderId}/deliver`,
                 method: 'PUT',
+                credentials: "include", 
             }),
         }),
     }),
