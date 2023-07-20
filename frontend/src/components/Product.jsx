@@ -4,12 +4,14 @@ import Rating from './Rating'
 
 
 const Product = ({product}) => {
-    const img = product.image.replace(/^\/uploads/, "/images");
+
+    console.log(product)
+    
     
   return (
     <Card className='my-3 p-3 rounded'>
         <Link to={`/product/${product._id}`}>
-            <Card.Img src={img} variant='top' />
+            <Card.Img src={product.image} variant='top' />
         </Link>
         <Card.Body>
             <Link to={`/product/${product._id}`}>
