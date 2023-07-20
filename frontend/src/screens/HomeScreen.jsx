@@ -9,6 +9,8 @@ import { useGetProductsQuery } from "../slices/productsApiSlice";
 const HomeScreen = () => {
   const { data: products, isLoading, error} = useGetProductsQuery()
 
+
+
   return (
     <>
       {isLoading ? (

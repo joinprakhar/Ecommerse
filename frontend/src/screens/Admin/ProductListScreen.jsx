@@ -4,7 +4,6 @@ import { FaEdit, FaPlus, FaTrash } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
-//import Paginate from "../../components/Paginate";
 import {
   useGetProductsQuery,
   useDeleteProductMutation,
@@ -13,38 +12,31 @@ import {
 import { toast } from "react-toastify";
 
 const ProductListScreen = () => {
-  const { pageNumber } = useParams();
+  const { data: products, isLoading, error, refetch } = useGetProductsQuery();
+  const [createProduct, { isLoading: loadingCreate }] =
+    useCreateProductMutation();
+  const [deleteProduct, { isLoading: loadingDelete }] =useDeleteProductMutation();
 
-  const { data, isLoading, error, refetch } = useGetProductsQuery({
-    pageNumber,
-  });
-
-  const [deleteProduct, { isLoading: loadingDelete }] =
-    useDeleteProductMutation();
-
-  const deleteHandler = async (id) => {
-    if (window.confirm("Are you sure")) {
-      try {
-        await deleteProduct(id);
-        refetch();
-      } catch (err) {
-        toast.error(err?.data?.message || err.error);
-      }
+  const createProductHandler = async () => {
+    if (window.confirm("Are you sure you want to create new products?")) {
+        try {
+            await createProduct()
+            refetch()
+        } catch (err) {
+            toast.error(err?.data?.message || err.error)
+        }
     }
   };
 
-  const [createProduct, { isLoading: loadingCreate }] =
-    useCreateProductMutation();
-
-  const createProductHandler = async () => {
-    if (window.confirm("Are you sure you want to create a new product?")) {
-      try {
-        await createProduct();
-        refetch();
-      } catch (err) {
-        toast.error(err?.data?.message || err.error);
+  const deleteHandler = async (id) => {
+      if (window.confirm("Are you sure..?")) {
+        try {
+          await deleteProduct(id);
+          refetch();
+        } catch (err) {
+          toast.error(err?.data?.message || err.error);
+        }
       }
-    }
   };
 
   return (
@@ -59,13 +51,12 @@ const ProductListScreen = () => {
           </Button>
         </Col>
       </Row>
-
       {loadingCreate && <Loader />}
       {loadingDelete && <Loader />}
       {isLoading ? (
         <Loader />
       ) : error ? (
-        <Message variant="danger">{error.data.message}</Message>
+        <Message variant="danger">{error?.data?.message}</Message>
       ) : (
         <>
           <Table striped bordered hover responsive className="table-sm">
@@ -80,7 +71,7 @@ const ProductListScreen = () => {
               </tr>
             </thead>
             <tbody>
-              {data.products.map((product) => (
+              {products.map((product) => (
                 <tr key={product._id}>
                   <td>{product._id}</td>
                   <td>{product.name}</td>
@@ -105,7 +96,6 @@ const ProductListScreen = () => {
               ))}
             </tbody>
           </Table>
-         {/* paginate */}
         </>
       )}
     </>
