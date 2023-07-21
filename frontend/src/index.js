@@ -24,6 +24,7 @@ import PaymentScreen from './screens/PaymentScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import OrderScreen from './screens/OrderScreen';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js'
+import { HelmetProvider } from 'react-helmet-async';
 import ProfileScreen from './screens/ProfileScreen';
 import AdminRoute from './components/AdminRoute';
 import OrderListScreen from './screens/Admin/OrderListScreen';
@@ -40,7 +41,7 @@ const router = createBrowserRouter(
       <Route path='/search/:keyword/page/:pageNumber' element={<HomeScreen />} />
       <Route path='/page/:pageNumber' element={<HomeScreen />} />
       <Route path='/product/:id' element={<ProductScreen />} />
-      <Route path='/cart' element={<CartScreen/>} />
+      <Route path='/cart' element={<CartScreen />} />
       <Route path='/login' element={<LoginScreen />} />
       <Route path='/register' element={<RegisterScreen />} />
       <Route path='' element={<PrivateRoute />} >
@@ -65,11 +66,13 @@ const router = createBrowserRouter(
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <PayPalScriptProvider deferLoading={true}>
-        <RouterProvider router={router} />
-      </PayPalScriptProvider>
-    </Provider>
+    <HelmetProvider>
+      <Provider store={store}>
+        <PayPalScriptProvider deferLoading={true}>
+          <RouterProvider router={router} />
+        </PayPalScriptProvider>
+      </Provider>
+    </HelmetProvider>
   </React.StrictMode>
 );
 
