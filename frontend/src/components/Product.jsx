@@ -3,17 +3,25 @@ import {Link} from 'react-router-dom'
 import Rating from './Rating'
 
 
+
 const Product = ({product}) => {
 
   return (
-    <Card className="my-3 p-3 rounded">
+    <Card className="my-3 p-3 rounded h-100">
       <Link to={`/product/${product._id}`}>
-        {(
+        {product.file === "/Images/sample.jpg" ? (
           <Card.Img
+            style={{ height: "180px" }}
+            src={product.image}
+            variant="top"
+          />
+        ) : (
+          <Card.Img
+            style={{ height: "180px" }}
             src={`http://localhost:5000${product.file}`}
             variant="top"
           />
-        ) || <Card.Img src={product.image} variant="top" />}
+        )}
       </Link>
       <Card.Body>
         <Link to={`/product/${product._id}`}>
