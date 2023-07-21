@@ -6,6 +6,7 @@ import Message from "../components/Message";
 import { useGetProductsQuery } from "../slices/productsApiSlice";
 import Paginate from "../components/Paginate";
 import ProductCarousel from "../components/ProductCarousel";
+import Meta from "../components/Meta";
 
 
 const HomeScreen = () => {
@@ -24,6 +25,7 @@ const HomeScreen = () => {
         </Message>
       ) : (
         <>
+        <Meta/>
           <h1>Latest Products</h1>
           <Row>
             {data.products &&
