@@ -38,8 +38,9 @@ app.use('/api/upload', uploadRoutes)
 app.get('/api/config/paypal', 
     (req, res) => res.send({ clientId: process.env.PAYPAL_CLIENT_ID }))
 
-const __dirname = path.resolve() // set __dirname to current working directory
-app.use('/uploads', express.static(path.join(__dirname , '/uploads')))
+app.use(express.static('public'))
+// const __dirname = path.resolve() // set __dirname to current working directory
+// app.use('/uploads', express.static(path.join(__dirname , '/uploads')))
 
 app.use(notFound)
 app.use(errorHandler)

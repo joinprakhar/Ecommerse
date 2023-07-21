@@ -17,6 +17,7 @@ const ProductEditScreen = () => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [image, setImage] = useState("");
+  const [file, setFile] = useState(null);
   const [brand, setBrand] = useState("");
   const [category, setCategory] = useState("");
   const [countInStock, setCountInStock] = useState(0);
@@ -45,6 +46,7 @@ const ProductEditScreen = () => {
         name,
         price,
         image,
+        file,
         brand,
         category,
         description,
@@ -63,6 +65,7 @@ const ProductEditScreen = () => {
       setName(product.name);
       setPrice(product.price);
       setImage(product.image);
+      setFile(product.file);
       setBrand(product.brand);
       setCategory(product.category);
       setCountInStock(product.countInStock);
@@ -76,11 +79,12 @@ const ProductEditScreen = () => {
     try {
       const res = await uploadProductImage(formData).unwrap();
       toast.success(res.message);
-      setImage(res.image);
+      setFile(res.image);
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     }
   };
+
 
   return (
     <>

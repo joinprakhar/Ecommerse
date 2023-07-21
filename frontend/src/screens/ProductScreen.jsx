@@ -40,8 +40,14 @@ const ProductScreen = () => {
         </Message>
       ) : (
         <Row>
-          <Col md={5}>
-            <Image src={product?.image} alt={product?.name} fluid />
+          <Col md={5}>            
+            {(
+              <Image
+                src={`http://localhost:5000${product.file}`}
+                alt={product?.name}
+                fluid
+              />
+            ) || <Card.Img src={product.image} alt={product?.name} fluid />}
           </Col>
           <Col md={4}>
             <ListGroup variant="flush">
@@ -86,12 +92,13 @@ const ProductScreen = () => {
                       <Col>Quantity</Col>
                       <Col>
                         <Form.Control
-                        as='select'
-                        value={qty}
-                        onChange={(e)=> setQty(Number(e.target.value))}>
-                          {[...Array(product.countInStock).keys()].map((x)=> (
-                            <option key={x+1} value={ x+1}>
-                              {x+1}
+                          as="select"
+                          value={qty}
+                          onChange={(e) => setQty(Number(e.target.value))}
+                        >
+                          {[...Array(product.countInStock).keys()].map((x) => (
+                            <option key={x + 1} value={x + 1}>
+                              {x + 1}
                             </option>
                           ))}
                         </Form.Control>
