@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.use(cors({
-    origin: ['http://localhost:3000', 'https://easyshop-acsv.onrender.com',"https://mingohuts.in"],
+    origin: ['http://localhost:3000','https://easyshop-acsv.onrender.com'],
     credentials: true,       
 }))
 
