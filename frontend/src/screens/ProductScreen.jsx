@@ -74,12 +74,12 @@ const ProductScreen = () => {
         </Message>
       ) : (
         <>
-          <Meta title={product?.name}/>
+          <Meta title={product?.name} />
           <Row>
             <Col md={5}>
               {(
                 <Image
-                  src={`http://localhost:5000${product.file}`}
+                  src={`https://easyshop-acsv.onrender.com${product.file}`}
                   alt={product?.name}
                   fluid
                 />

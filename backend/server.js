@@ -36,9 +36,12 @@ app.use('/api/upload', uploadRoutes)
 app.get('/api/config/paypal', 
     (req, res) => res.send({ clientId: process.env.PAYPAL_CLIENT_ID }))
 
-app.use(express.static('public'))
+// app.use(express.static('public'))
 // const __dirname = path.resolve() // set __dirname to current working directory
 // app.use('/uploads', express.static(path.join(__dirname , '/uploads')))
+
+// const __dirname = path.resolve() // set __dirname to current working directory
+// 
 
 if (process.env.NODE_ENV === 'production') {
     const __dirname = path.resolve();
@@ -50,7 +53,8 @@ if (process.env.NODE_ENV === 'production') {
     );
 } else {
     const __dirname = path.resolve();
-    app.use(express.static('public'))
+    app.use('/Images', express.static(path.join(__dirname, '/public/Images')))
+    //app.use(express.static('public'))
     app.get('/', (req, res) => {
         res.send('API is running....');
     });
