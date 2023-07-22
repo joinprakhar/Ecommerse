@@ -45,7 +45,21 @@ const CartScreen = () => {
               <ListGroup.Item key={item._id}>
                 <Row>
                   <Col md={2}>
-                    <Image src={item.image} alt={item.name} fluid rounded />
+                    {item.file === "/Images/sample.jpg" ? (
+                      <Image
+                        style={{ height: "180px" }}
+                        src={item.image}
+                        variant="top"
+                      />
+                    ) : (
+                      <Image
+                        style={{ height: "180px" }}
+                        src={item.file}
+                        variant="top"
+                        fluid
+                        rounded
+                      />
+                    )}
                   </Col>
                   <Col md={3}>
                     <Link to={`/product/${item._id}`}>{item.name}</Link>
@@ -55,7 +69,9 @@ const CartScreen = () => {
                     <Form.Control
                       as="select"
                       value={item.qty}
-                      onChange={(e) => addToCartHander(item, Number(e.target.value))}
+                      onChange={(e) =>
+                        addToCartHander(item, Number(e.target.value))
+                      }
                     >
                       {[...Array(item.countInStock).keys()].map((x) => (
                         <option key={x + 1} value={x + 1}>
@@ -65,10 +81,11 @@ const CartScreen = () => {
                     </Form.Control>
                   </Col>
                   <Col md={2}>
-                    <Button 
-                    type="button" 
-                    variant="light" 
-                    onClick={()=>removeFromCartHandler(item._id)}>
+                    <Button
+                      type="button"
+                      variant="light"
+                      onClick={() => removeFromCartHandler(item._id)}
+                    >
                       <FaTrash />
                     </Button>
                   </Col>

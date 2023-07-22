@@ -77,14 +77,19 @@ const ProductScreen = () => {
           <Meta title={product?.name} />
           <Row>
             <Col md={5}>
-              {(
-                <Image
-                  src={`https://easyshop-acsv.onrender.com${product.file}`}
-                  alt={product?.name}
-                  fluid
-                />
-              ) || <Card.Img src={product.image} alt={product?.name} fluid />}
-            </Col>
+              {product.file === "/Images/sample.jpg" ? (
+            <Card.Img
+              style={{ height: "180px" }}
+              src={product.image}
+              variant="top"
+            />
+          ) : (
+            <Card.Img
+              style={{ height: "180px" }}
+              src={product.file}
+              variant="top"
+            />
+          )}</Col>
             <Col md={4}>
               <ListGroup variant="flush">
                 <ListGroup.Item>

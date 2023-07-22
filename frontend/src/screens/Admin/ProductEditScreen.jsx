@@ -33,8 +33,8 @@ const ProductEditScreen = () => {
   const [updateProduct, { isLoading: loadingUpdate }] =
     useUpdateProductMutation();
 
-  const [uploadProductImage, { isLoading: loadingUpload }] =
-    useUploadProductImageMutation();
+  //const [uploadProductImage, { isLoading: loadingUpload }] =
+    //useUploadProductImageMutation();
 
   const navigate = useNavigate();
 
@@ -75,14 +75,29 @@ const ProductEditScreen = () => {
 
   const uploadFileHandler = async (e) => {
     const formData = new FormData();
-    formData.append("image", e.target.files[0]);
-    try {
-      const res = await uploadProductImage(formData).unwrap();
-      toast.success(res.message);
-      setFile(res.image);
-    } catch (err) {
-      toast.error(err?.data?.message || err.error);
-    }
+    formData.append("file", e.target.files[0]);
+    formData.append("upload_preset", "easyshop");
+    formData.append("cloud_name", "prakharcloudspace");
+    fetch("https://api.cloudinary.com/v1_1/prakharcloudspace/image/upload", {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setFile(data.secure_url);
+        toast.success("Image uploaded successfully");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Error uploading");
+      });
+    // try {
+    //   const res = await uploadProductImage(formData).unwrap();
+    //   toast.success(res.message);
+    //   setFile(res.image);
+    // } catch (err) {
+    //   toast.error(err?.data?.message || err.error);
+    // }
   };
 
 
@@ -133,7 +148,7 @@ const ProductEditScreen = () => {
                 onChange={uploadFileHandler}
                 type="file"
               ></Form.Control>
-              {loadingUpload && <Loader />}
+              {/* {loadingUpload && <Loader />} */}
             </Form.Group>
 
             <Form.Group controlId="brand">

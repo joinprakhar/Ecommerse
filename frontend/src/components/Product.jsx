@@ -19,7 +19,7 @@ const Product = ({product}) => {
           ) : (
             <Card.Img
               style={{ height: "180px" }}
-              src={`http://localhost:5000${product.file}`}
+              src={product.file}
               variant="top"
             />
           )}

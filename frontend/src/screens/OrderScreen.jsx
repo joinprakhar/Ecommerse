@@ -158,12 +158,21 @@ const OrderScreen = () => {
                     <ListGroup.Item key={index}>
                       <Row>
                         <Col md={1}>
-                          <Image
-                            src={item.image}
-                            alt={item.name}
-                            fluid
-                            rounded
-                          />
+                          {item.file === "/Images/sample.jpg" ? (
+                            <Image
+                              style={{ height: "180px" }}
+                              src={item.image}
+                              variant="top"
+                            />
+                          ) : (
+                            <Image
+                              style={{ height: "180px" }}
+                              src={item.file}
+                              variant="top"
+                              fluid
+                              rounded
+                            />
+                          )}
                         </Col>
                         <Col>
                           <Link to={`/product/${item.product}`}>
@@ -220,12 +229,14 @@ const OrderScreen = () => {
                   ) : (
                     <div>
                       {/* THIS BUTTON IS FOR TESTING! REMOVE BEFORE PRODUCTION! */}
-                      { <Button
-                        style={{ marginBottom: '10px' }}
-                        onClick={onApproveTest}
-                      >
-                        Test Pay Order
-                      </Button> }
+                      {
+                        <Button
+                          style={{ marginBottom: "10px" }}
+                          onClick={onApproveTest}
+                        >
+                          Test Pay Order
+                        </Button>
+                      }
 
                       <div>
                         <PayPalButtons

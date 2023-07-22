@@ -23,7 +23,7 @@ const ProductCarousel = () => {
             ) : (
               <Image
                 style={{ height: "180px" }}
-                src={`http://localhost:5000${product.file}`}
+                src={product.file}
                 variant="top"
                 fluid
               />
