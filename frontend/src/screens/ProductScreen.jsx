@@ -79,15 +79,15 @@ const ProductScreen = () => {
             <Col md={5}>
               {product.file === "/Images/sample.jpg" ? (
             <Card.Img
-              style={{ height: "180px" }}
+              //style={{ height: "180px" }}
               src={product.image}
-              variant="top"
+              variant="top" fluid
             />
           ) : (
             <Card.Img
-              style={{ height: "180px" }}
+              //style={{ height: "180px" }}
               src={product.file}
-              variant="top"
+              variant="top" fluid
             />
           )}</Col>
             <Col md={4}>

@@ -47,13 +47,13 @@ const CartScreen = () => {
                   <Col md={2}>
                     {item.file === "/Images/sample.jpg" ? (
                       <Image
-                        style={{ height: "180px" }}
+                        
                         src={item.image}
                         variant="top"
                       />
                     ) : (
                       <Image
-                        style={{ height: "180px" }}
+                        
                         src={item.file}
                         variant="top"
                         fluid
