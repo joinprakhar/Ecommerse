@@ -32,7 +32,11 @@ import ProductListScreen from './screens/Admin/ProductListScreen';
 import ProductEditScreen from './screens/Admin/ProductEditScreen';
 import UserListScreen from './screens/Admin/UserListScreen';
 import UserEditScreen from './screens/Admin/UserEditScreen';
-
+import NewArrivals from './components/FeaturedAuthors';
+import SpecialOffers from './components/SpecialOffers';
+import BestSellers from './components/BestSellers';
+import ContactForm from './components/contactus';
+import BookQuiz from './components/BookQuiz';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
@@ -44,6 +48,11 @@ const router = createBrowserRouter(
       <Route path='/cart' element={<CartScreen />} />
       <Route path='/login' element={<LoginScreen />} />
       <Route path='/register' element={<RegisterScreen />} />
+      <Route path='/contact' element = {<ContactForm />} />
+      <Route path='/feature-authors' element = {<NewArrivals />} />
+      <Route path='/special-offers' element = {<SpecialOffers />} />
+      <Route path='/best-sellers' element = {<BestSellers />} />
+      <Route path='/bookquiz' element = {<BookQuiz />} />
       <Route path='' element={<PrivateRoute />} >
         <Route path='/shipping' element={<ShippingScreen />} />
         <Route path='/payment' element={<PaymentScreen />} />

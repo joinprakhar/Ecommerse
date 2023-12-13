@@ -26,7 +26,7 @@ const HomeScreen = () => {
       ) : (
         <>
         <Meta/>
-          <h1>Latest Products</h1>
+          <h1 style={{color:"black"}}>Latest Products</h1>
           <Row>
             {data.products &&
               data.products.map((product) => (

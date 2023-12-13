@@ -9,12 +9,15 @@ import 'react-toastify/dist/ReactToastify.css'
 const App = () => {
   return (
     <>
+
+    
       <Header />
-      <main className='py-3'>
+      <main className='py-3' style={{backgroundColor:"rgb(165 121 42 / 19%)"}}>
         <Container>
           <Outlet/>
         </Container>
       </main>
+
       <Footer/>
       <ToastContainer/>
     </>

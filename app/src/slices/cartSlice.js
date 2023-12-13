@@ -3,7 +3,7 @@ import { updateCart } from '../utils/cartUtils';
 
 const initialState = localStorage.getItem('cart')
     ? JSON.parse(localStorage.getItem('cart'))
-    : { cartItems: [], shippingAddress: {}, paymentMethod: "paypal" };
+    : { cartItems: [], shippingAddress: {}, paymentMethod: "Online Payment" };
 
 
 const cartSlice = createSlice({

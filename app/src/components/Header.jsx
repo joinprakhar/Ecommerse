@@ -29,7 +29,7 @@ const logoutHandler = async ()=>{
 
   return (
     <header>
-      <Navbar bg="dark" variant="dark" expand="lg collapseOnSelect">
+      <Navbar bg="dark" variant="dark" expand="lg collapseOnSelect" >
         <Container>
           <LinkContainer to="/">
             <Navbar.Brand>
@@ -50,6 +50,17 @@ const logoutHandler = async ()=>{
                     </Badge>
                   )}
                 </Nav.Link>
+              </LinkContainer>
+
+
+              <LinkContainer to="/feature-authors">
+                <Nav.Link>Featured Author</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/best-sellers">
+                <Nav.Link>Best Sellers</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/special-offers">
+                <Nav.Link>Special Offers</Nav.Link>
               </LinkContainer>
               {userInfo ? (
                 <NavDropdown title={userInfo.name} id="username">
@@ -78,6 +89,7 @@ const logoutHandler = async ()=>{
                   <LinkContainer to="/admin/orderlist">
                     <NavDropdown.Item>Orders</NavDropdown.Item>
                   </LinkContainer>
+                  
                 </NavDropdown>
               )}
             </Nav>
